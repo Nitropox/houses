@@ -6,7 +6,6 @@ const housesReducer = (state, action) => {
     case "GET_HOUSES":
       return action.payload;
     case "DELETE_HOUSE": {
-      console.log("State", state);
       return state.filter(house => house._id !== action.payload);
     }
     default:

@@ -12,22 +12,18 @@ const AddScreen = ({ navigation }) => {
   const [error, setError] = useState("");
 
   const submit = () => {
-    addHouse(address, owner, price, area, () => {
-      navigation.navigate("Index");
-    });
-
-    // if (
-    //   address.lenght > 0 &&
-    //   owner.length > 0 &&
-    //   price.length > 0 &&
-    //   area.length > 0
-    // ) {
-    //   addHouse(address, owner, price, area, () => {
-    //     navigation.navigate("Index");
-    //   });
-    // } else {
-    //   setError("Please fill all the inputs!");
-    // }
+    if (
+      address.length > 0 &&
+      owner.length > 0 &&
+      price.length > 0 &&
+      area.length > 0
+    ) {
+      addHouse(address, owner, price, area, () => {
+        navigation.navigate("Index");
+      });
+    } else {
+      setError("Please fill all the inputs!");
+    }
   };
 
   return (
