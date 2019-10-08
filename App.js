@@ -1,19 +1,23 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import IndexScreen from "./src/screens/IndexScreen";
+import AddScreen from "./src/screens/AddScreen";
+import ShowScreen from "./src/screens/ShowScreen";
+import { Provider as HousesProvider } from "./src/context/HousesContext";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const navigator = createStackNavigator({
+  Index: IndexScreen,
+  Show: ShowScreen,
+  Add: AddScreen
 });
+
+const App = createAppContainer(navigator);
+
+export default () => {
+  return (
+    <HousesProvider>
+      <App />
+    </HousesProvider>
+  );
+};
