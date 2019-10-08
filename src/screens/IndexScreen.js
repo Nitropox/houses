@@ -23,7 +23,7 @@ const IndexScreen = ({ navigation }) => {
     <SafeArea>
       <Button title="Add house" onPress={() => navigation.navigate("Add")} />
       <HousesList
-        data={state.houses}
+        data={state}
         keyExtractor={item => item._id.toString()}
         renderItem={({ item }) => {
           return (

@@ -7,7 +7,7 @@ const housesReducer = (state, action) => {
       return action.payload;
     case "DELETE_HOUSE": {
       console.log("State", state);
-      return state.houses.filter(house => house._id !== action.payload);
+      return state.filter(house => house._id !== action.payload);
     }
     default:
       return state;
@@ -16,7 +16,7 @@ const housesReducer = (state, action) => {
 const getHouses = dispatch => async () => {
   try {
     const response = await api.get("/houses");
-    dispatch({ type: "GET_HOUSES", payload: response.data });
+    dispatch({ type: "GET_HOUSES", payload: response.data.houses });
   } catch (err) {
     console.log(err);
   }
